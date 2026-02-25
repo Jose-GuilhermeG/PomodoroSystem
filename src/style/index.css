@@ -1,0 +1,72 @@
+*{
+    margin:  0;
+    padding:  0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-color : aqua;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+}
+
+.button{
+    padding: 4px ;
+    margin: 0 2px;
+    font-size: 16px;
+    font-weight: 600;
+    color: gray;
+    border-radius: 5px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.button:hover{
+    transform: scale(105%);
+}
+
+.button-outiline{
+    border: 2px rgb(170, 170, 170) solid;
+}
+
+.card{
+    padding: 10px;
+    width: fit-content;
+    min-width: 50vw;
+    background-color: rgb(255, 255, 255);
+    min-height: 35vh;
+    position: absolute;
+    top: 35%;
+    left: 25% ;
+    border-radius: 10px;
+    box-shadow: gray 2px 2px 5px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.card-title{
+    margin:10% 0;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.pomodoro-display{
+    font-size: 40px;
+    margin:0 0 5% 0;
+}
+
+.button-container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

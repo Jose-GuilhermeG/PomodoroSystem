@@ -4,9 +4,10 @@ import { SecondsToTime } from "../utils/SecondsToTime";
 
 interface PomodoroTimerProps {
     defaultPomodoroTime : number;
+    className? : string
 }
 
-export default function PomodoroTimer({defaultPomodoroTime} : PomodoroTimerProps) : JSX.Element{
+export default function PomodoroTimer({defaultPomodoroTime , className = ""} : PomodoroTimerProps) : JSX.Element{
     const [mainTime , setMainTime] = React.useState<number>(defaultPomodoroTime)
 
     useInterval(()=>{
@@ -14,7 +15,7 @@ export default function PomodoroTimer({defaultPomodoroTime} : PomodoroTimerProps
     } , 1000)
 
     return (
-        <div>
+        <div className={className + "pomodoro-display"}>
             {SecondsToTime(mainTime)}
         </div>
     )
