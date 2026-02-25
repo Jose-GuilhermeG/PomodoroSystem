@@ -2,7 +2,7 @@ import PomodoroTimer from "./components/PomodoroTime"
 
 function App() {
   return (
-    <PomodoroTimer defaultPomodoroTime={1500}/>
+    <PomodoroTimer defaultPomodoroTime={300}/>
   )
 }
 

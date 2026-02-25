@@ -6,12 +6,10 @@ export function useInterval<C extends CallableFunction>(
 ): void {
   const savedCallback = useRef<C>(null) ;
 
-  // Remember the latest callback.
   useEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
 
-  // Set up the interval.
   useEffect(() => {
     function tick() {
       if (savedCallback.current) savedCallback.current();
