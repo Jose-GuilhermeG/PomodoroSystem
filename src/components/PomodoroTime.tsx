@@ -1,26 +1,24 @@
-import React, { type JSX } from "react";
+import React, { type ActionDispatch, type JSX } from "react";
 import { useInterval } from "../hooks/useInterval";
 import { SecondsToTime } from "../utils/SecondsToTime";
+import type { TimeReducerAction } from "../App";
 
 interface PomodoroTimerProps {
-    PomodoroTime : number;
-    shortRestTime : number;
-    longRestTime : number;
-    cycles : number;
+    time : number;
+    setTimeFunc : React.Dispatch<TimeReducerAction>;
     runing : boolean;
     className? : string
 }
 
-export default function PomodoroTimer({PomodoroTime , shortRestTime , longRestTime , cycles , runing , className = ""} : PomodoroTimerProps) : JSX.Element{
-    const [mainTime , setMainTime] = React.useState<number>(PomodoroTime)
+export default function PomodoroTimer({time , setTimeFunc ,  runing , className = ""} : PomodoroTimerProps) : JSX.Element{
 
     useInterval(()=>{
-        setMainTime( mainTime - 1)
+        setTimeFunc({type : "decrement"})
     } , runing ? 1000 : null)
 
     return (
         <div className={className + "pomodoro-display"}>
-            {SecondsToTime(mainTime)}
+            {SecondsToTime(time)}
         </div>
     )
 }
