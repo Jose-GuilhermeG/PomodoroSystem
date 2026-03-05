@@ -1,4 +1,4 @@
-import React, { type ActionDispatch, type JSX } from "react";
+import React, {type JSX } from "react";
 import { useInterval } from "../hooks/useInterval";
 import { SecondsToTime } from "../utils/SecondsToTime";
 import type { TimeReducerAction } from "../App";

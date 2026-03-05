@@ -1,6 +1,9 @@
 import React , {useState, useReducer ,type MouseEvent} from "react"
 import PomodoroTimer from "./components/PomodoroTime"
 import { Button } from "./components/button"
+import startedSound from "./sounds/start.mp3"
+import finishSound from "./sounds/finish.mp3"
+import useSound from "use-sound"
 
 export interface TimeReducerAction{
   type : 'decrement' | 'reset';
@@ -22,11 +25,15 @@ function App() {
   const [isResting , setIsResting] = useState<boolean>(false)
   const [pomodoroTime , setPomodoroTime] = useReducer(TimeReducer , 1500)
   const [content , setContent] = useState<string>("Começar")
+  const [playStartedSound] = useSound(startedSound)
+  const [playFinishSound] = useSound(finishSound)
 
   const handlerResting = ()=>{
     setIsWorking(false)
     setPomodoroTime({type : "reset" , "value" : 400})
+    setIsRuning(true)
     setContent("Você está Descansando")
+    playFinishSound()
   }
 
   const startWorking = ()=>{
@@ -34,6 +41,7 @@ function App() {
     setIsRuning(true)
     setPomodoroTime({type : "reset"})
     setContent("Você está trabalhando")
+    playStartedSound()
   }
   
   const handlerPause = (e : MouseEvent )=>{
